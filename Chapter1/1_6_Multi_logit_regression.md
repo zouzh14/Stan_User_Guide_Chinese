@@ -1,6 +1,6 @@
-## 1.6 多类逻辑蒂克回归
+## 1.6 多类Logistic回归
 
-多类输出情况下的逻辑蒂克回归可以直接在Stan中进行。记对每个输出变量$y_n$都有$K$个可能结果，它对应的$x_n$是一个D维向量。系数先验为$normal(0,5)$的多类逻辑蒂克回归代码如下。
+多类输出情况下的Logistic回归可以直接在Stan中进行。记对每个输出变量$y_n$都有$K$个可能结果，它对应的$x_n$是一个D维向量。系数先验为$normal(0,5)$的多类Logistic回归代码如下。
 
 ```
 data { 
@@ -56,7 +56,7 @@ int<lower = 1, upper = K> y[N];
 
 因为在向softmax输入值的每个分量添加一个常数时，输出不变，所以模型通常只有系数有合适的先验时才有可识别性。 
 
-另一种方法是使用(K −1)向量，将一个分量固定为零。[部分已知参数](https://mc-stan.org/docs/2_27/stan-users-guide/partially-known-parameters-section.html#partially-known-parameters.section)一节讨论了如何在向量中混合参数和固定常量。在多类逻辑蒂克中，参数块中将重定义出(K −1)向量：
+另一种方法是使用(K −1)向量，将一个分量固定为零。[部分已知参数](https://mc-stan.org/docs/2_27/stan-users-guide/partially-known-parameters-section.html#partially-known-parameters.section)一节讨论了如何在向量中混合参数和固定常量。在多类Logistic中，参数块中将重定义出(K −1)向量：
 
 ```
 parameters { 
